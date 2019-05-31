@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ahgj.community.canal.mapper.PortBaseInfoMapper">
+
+    <select id="selectConnectInfoAll" resultType="com.ahgj.community.canal.bean.dao.PortBaseDao">
+        SELECT * FROM C_PORT_BASE WHERE
+        <if test="_parameter != null and _parameter !=''">
+            DELETE_FLAG=#{deleteFlag,jdbcType=VARCHAR}
+        </if>
+    </select>
+    <select id="isSynchronizationTableExist" resultType="java.lang.Integer">
+        SELECT count(TARGET_TABLE_NAME)
+        FROM C_PORT_BASE
+        WHERE TARGET_TABLE_NAME = #{targetTableName}
+    </select>
+
+
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ahgj.community.canal.mapper.OracleExecutionMapper">
+
+    <insert id="insertBatch">
+        insert into #{tableName}
+        select A.* from
+        <foreach open="(" close=")" collection="list" item="item" index="index" separator="UNION ALL">
+            select
+            #{item.col1} as col1,
+            #{item.col2} as col2,
+            #{item.col3} as col3
+            from dual
+        </foreach>
+    </insert>
+</mapper>

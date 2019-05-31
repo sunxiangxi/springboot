@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ahgj.community.canal.mapper.RestSynchronizationRelMapper">
+
+    <select id="selectRestConnectByPortBaseId" resultType="com.ahgj.community.canal.bean.dao.RestSynchronizationRelDao">
+        SELECT *
+        FROM C_REST_SYNCHRONIZATION_REL
+        WHERE DELETE_FLAG = 0 AND PORT_ID = #{portBaseId} AND rownum = 1
+    </select>
+</mapper>
